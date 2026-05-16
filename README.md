@@ -68,6 +68,18 @@ Apply whatever modifications you want to the source code.
 patch --strip=1 < /path/to/mbox/file
 ```
 
+## Change the working directory to the extracted source code folder
+
+This simplifies the instructions in the following steps.
+
+Run the following command in the terminal to change the working directory to the extracted source code folder:
+
+```bash
+cd linux-_upstream version_
+```
+
+Replace the `_upstream version_` placeholder text with the upstream version string of the kernel, for example, the `7.0.0-15.15` Ubuntu kernel version has an upstream version of `7.0.0`.
+
 ## Licensing
 
 Unless otherwise noted([comment headers](https://reuse.software/spec-3.3/#comment-headers)/[REUSE.toml](https://reuse.software/spec-3.3/#reusetoml)), this product is licensed under [the 4.0 version of the Creative Commons Attribution-ShareAlike license](https://creativecommons.org/licenses/by-sa/4.0/), or any of its more recent versions of your preference.
