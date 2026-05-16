@@ -28,6 +28,14 @@ To acquire the source package of the running Ubuntu kernel, we must first enable
 
 Create a new folder as the working directory of this process.  The path of this folder _must not contain spaces_ (and ideally, any characters that is non-alpha-numeric or dash) to prevent triggering compatibility issues with the build system.
 
+Run the following command in the terminal to change the working directory to the newly created folder:
+
+```bash
+cd /path/to/working/directory
+```
+
+Replace the `/path/to/working/directory` placeholder text with the actual path of the newly created folder.
+
 ## Acquire source package of the Ubuntu kernel
 
 1. Run the following command in the terminal to query the version of the running kernel:
