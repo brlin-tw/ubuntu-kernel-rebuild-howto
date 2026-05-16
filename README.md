@@ -68,6 +68,18 @@ Run the following command in the terminal _as root_ to install the software for 
 apt install devscripts equivs
 ```
 
+## Change the working directory to the extracted source code folder
+
+This simplifies the instructions in the following steps.
+
+Run the following command in the terminal to change the working directory to the extracted source code folder:
+
+```bash
+cd linux-_upstream version_
+```
+
+Replace the `_upstream version_` placeholder text with the upstream version string of the kernel, for example, the `7.0.0-15.15` Ubuntu kernel version has an upstream version of `7.0.0`.
+
 ## Build the build dependencies metapackage
 
 Run the following command in the terminal to build the build dependencies metapackage for the kernel source package:
@@ -100,18 +112,6 @@ Apply whatever modifications you want to the source code.
 ```bash
 patch --strip=1 < /path/to/mbox/file
 ```
-
-## Change the working directory to the extracted source code folder
-
-This simplifies the instructions in the following steps.
-
-Run the following command in the terminal to change the working directory to the extracted source code folder:
-
-```bash
-cd linux-_upstream version_
-```
-
-Replace the `_upstream version_` placeholder text with the upstream version string of the kernel, for example, the `7.0.0-15.15` Ubuntu kernel version has an upstream version of `7.0.0`.
 
 ## Prepare the kernel source
 
