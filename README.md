@@ -80,6 +80,16 @@ cd linux-_upstream version_
 
 Replace the `_upstream version_` placeholder text with the upstream version string of the kernel, for example, the `7.0.0-15.15` Ubuntu kernel version has an upstream version of `7.0.0`.
 
+## Prepare the kernel source
+
+Run the following command in the terminal to prepare the kernel source for building:
+
+```bash
+chmod a+x debian/scripts/* && \
+    chmod a+x debian/scripts/misc/* && \
+    fakeroot debian/rules clean
+```
+
 ## Add an entry to the Debian changelog
 
 Before building the kernel, we must add an entry to the Debian changelog.  This is required to properly version the resulting kernel packages.
