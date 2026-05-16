@@ -13,6 +13,17 @@ I have to rebuild my Ubuntu kernel for troubleshooting a screen hang problem on 
 
 This process is tested on Ubuntu 26.04, your mileage may vary on other versions of Ubuntu.
 
+## Enable the source portion of the Ubuntu archive
+
+To acquire the source package of the running Ubuntu kernel, we must first enable the source portion of the Ubuntu archive.
+
+1. Edit the /etc/apt/sources.list.d/ubuntu.sources file _as root_, append `deb-src` to the value of the `Types` fields(separated by space).
+1. Run the following command in a terminal _as root_ to update the Ubuntu archive index:
+
+    ```bash
+    apt update
+    ```
+
 ## Licensing
 
 Unless otherwise noted([comment headers](https://reuse.software/spec-3.3/#comment-headers)/[REUSE.toml](https://reuse.software/spec-3.3/#reusetoml)), this product is licensed under [the _license_version_ version of the CC-BY-SA-4.0+ license](https\://creativecommons.org/licenses/by-sa/4.0/), or any of its more recent versions of your preference.
