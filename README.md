@@ -9,6 +9,10 @@ This guide explains how to properly rebuild and install the Ubuntu kernel from s
 
 I have to rebuild my Ubuntu kernel for troubleshooting a screen hang problem on my Framework Laptop 13 (AMD 7040 series).  This guide documents the process.
 
+## Note
+
+This process is tested on Ubuntu 26.04, your mileage may vary on other versions of Ubuntu.
+
 ## Licensing
 
 Unless otherwise noted([comment headers](https://reuse.software/spec-3.3/#comment-headers)/[REUSE.toml](https://reuse.software/spec-3.3/#reusetoml)), this product is licensed under [the _license_version_ version of the CC-BY-SA-4.0+ license](https\://creativecommons.org/licenses/by-sa/4.0/), or any of its more recent versions of your preference.
