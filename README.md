@@ -76,6 +76,21 @@ Run the following command in the terminal to build the build dependencies metapa
 mk-build-deps
 ```
 
+## Install the kernel build dependencies
+
+Run the following command in the terminal _as root_ to install the build dependencies of the kernel source package:
+
+```bash
+sudo apt --no-install-recommends install ./linux-build-deps_*.deb
+```
+
+**NOTE:** You can cleanly remove the build dependencies after the process by running the following commands in the terminal _as root_:
+
+```bash
+apt remove linux-build-deps
+apt autoremove
+```
+
 ## Apply the modifications
 
 Apply whatever modifications you want to the source code.
