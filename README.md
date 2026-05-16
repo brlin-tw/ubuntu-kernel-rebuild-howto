@@ -143,6 +143,17 @@ Before building the kernel, we must add an entry to the Debian changelog.  This 
 1. Write a proper changelog message in the message field of the changelog entry, for example, `Rebuild the kernel with custom modifications.`.
 1. Save the file and exit the text editor.
 
+## Build the kernel packages
+
+Run the following command in the terminal to build the kernel packages:
+
+```bash
+fakeroot debian/rules clean && \
+    fakeroot debian/rules binary
+```
+
+The built kernel packages will be in the parent directory of the current working directory.
+
 ## References
 
 The following materials are referenced during the writing of this guide:
