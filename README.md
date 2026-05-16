@@ -68,6 +68,14 @@ Run the following command in the terminal _as root_ to install the software for 
 apt install devscripts equivs
 ```
 
+## Build the build dependencies metapackage
+
+Run the following command in the terminal to build the build dependencies metapackage for the kernel source package:
+
+```bash
+mk-build-deps
+```
+
 ## Apply the modifications
 
 Apply whatever modifications you want to the source code.
