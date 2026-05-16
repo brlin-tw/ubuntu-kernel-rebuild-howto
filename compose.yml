@@ -7,12 +7,12 @@
 #
 # Copyright 2026 林博仁(Buo-ren Lin) <buo.ren.lin@gmail.com>
 # SPDX-License-Identifier: CC-BY-SA-4.0
-name: ubuntu\-kernel\-rebuild\-howto
+name: ubuntu-kernel-rebuild-howto
 services:
   # Environment for testing the project
   test-environment:
-    container_name: ubuntu\-kernel\-rebuild\-howto-test
-    hostname: ubuntu\-kernel\-rebuild\-howto-test
+    container_name: ubuntu-kernel-rebuild-howto-test
+    hostname: ubuntu-kernel-rebuild-howto-test
     image: ubuntu:24.04
     volumes:
       - type: bind

@@ -5,7 +5,7 @@
 # * REUSE.toml | REUSE Specification – Version 3.2 | REUSE
 #   https://reuse.software/spec-3.2/#reusetoml
 #
-# Copyright 2024 林博仁(Buo-ren Lin) <buo.ren.lin@gmail.com>
+# Copyright 2026 林博仁(Buo-ren Lin) <buo.ren.lin@gmail.com>
 # SPDX-License-Identifier: CC-BY-SA-4.0+
 
 version = 1
@@ -15,5 +15,5 @@ path = [
     "*.README.md",
     "**/README.md"
 ]
-SPDX-FileCopyrightText = "2026 林博仁(Buo-ren Lin) <buo.ren.lin.com>"
+SPDX-FileCopyrightText = "2026 林博仁(Buo-ren Lin) <buo.ren.lin@gmail.com>"
 SPDX-License-Identifier = "CC-BY-SA-4.0+"
