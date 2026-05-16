@@ -28,6 +28,28 @@ To acquire the source package of the running Ubuntu kernel, we must first enable
 
 Create a new folder as the working directory of this process.  The path of this folder _must not contain spaces_ (and ideally, any characters that is non-alpha-numeric or dash) to prevent triggering compatibility issues with the build system.
 
+## Acquire source package of the Ubuntu kernel
+
+Run the following commands in the terminal to acquire the source package of the current running Ubuntu kernel:
+
+```bash
+if ! kernel_version="$(uname -r)"; then
+    printf \
+        'Error: Unable to query the version of the running kernel.\n' \
+        1>&2
+else
+    if ! apt source "linux-image-${kernel_version}"; then
+        printf \
+            'Error: Unable to acquire the source package of the running kernel.\n' \
+            1>&2
+    fi
+fi
+```
+
+This will download the source package, and extract it in the current directory.
+
+**NOTE:** If you're already build and running a custom kernel, the `uname -r` command may not return a version that has a corresponding source package in the Ubuntu archive.  In this case, you can manually specify the version of the kernel you want to acquire the source package of, by replacing `$(uname -r)` text with the version string.
+
 ## Licensing
 
 Unless otherwise noted([comment headers](https://reuse.software/spec-3.3/#comment-headers)/[REUSE.toml](https://reuse.software/spec-3.3/#reusetoml)), this product is licensed under [the 4.0 version of the Creative Commons Attribution-ShareAlike license](https://creativecommons.org/licenses/by-sa/4.0/), or any of its more recent versions of your preference.

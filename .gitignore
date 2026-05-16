@@ -94,3 +94,11 @@
 
 # Don't track unpacked product files
 /ubuntu-kernel-rebuild-howto-*/
+
+# Don't track Debian source package files
+/linux_*.diff.gz
+/linux_*.dsc
+/linux_*.orig.tar*
+
+# Don't track unpacked Linux source tree
+/linux-*/
