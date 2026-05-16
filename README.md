@@ -58,16 +58,6 @@ Replace the `/path/to/working/directory` placeholder text with the actual path o
 
 **NOTE:** If you're already build and running a custom kernel, the `uname -r` command may not return a version that has a corresponding source package in the Ubuntu archive.  In this case, you can manually specify the version of the kernel you want to acquire the source package of, by replacing `$(uname -r)` text with the version string.
 
-## Install metapackage build dependencies
-
-To allow clean removal of the build dependencies after the process, we will install the build dependencies of the kernel source package via a metapackage.
-
-Run the following command in the terminal _as root_ to install the software for generate such metapackages:
-
-```bash
-apt install devscripts equivs
-```
-
 ## Change the working directory to the extracted source code folder
 
 This simplifies the instructions in the following steps.
@@ -88,6 +78,16 @@ Run the following command in the terminal to prepare the kernel source for build
 chmod a+x debian/scripts/* && \
     chmod a+x debian/scripts/misc/* && \
     fakeroot debian/rules clean
+```
+
+## Install metapackage build dependencies
+
+To allow clean removal of the build dependencies after the process, we will install the build dependencies of the kernel source package via a metapackage.
+
+Run the following command in the terminal _as root_ to install the software for generate such metapackages:
+
+```bash
+apt install devscripts equivs
 ```
 
 ## Build the build dependencies metapackage
