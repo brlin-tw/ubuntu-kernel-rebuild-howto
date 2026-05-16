@@ -1,93 +1,170 @@
-# How to rebuild the Ubuntu kernel from source
+# The common project template
 
+A common project template to start of, batteries included.
 
+<https://gitlab.com/the-common/project-template>  
+[![The GitLab CI pipeline status badge of the project's `main` branch](https://gitlab.com/the-common/project-template/badges/main/pipeline.svg?ignore_skipped=true "Click here to check out the comprehensive status of the GitLab CI pipelines")](https://gitlab.com/the-common/project-template/-/pipelines) [![The "Check potential problems in the project" GitHub Actions workflow status badge](https://github.com/the-common/project-template/actions/workflows/check-potential-problems.yml/badge.svg "Click here to check out the comprehensive status of the \"Check potential problems in the project\" GitHub Actions workflow")](https://github.com/the-common/project-template/actions/workflows/check-potential-problems.yml) [![pre-commit enabled badge](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white "This project uses pre-commit to check potential problems")](https://pre-commit.com/) [![REUSE Specification compliance badge](https://api.reuse.software/badge/gitlab.com/the-common/project-template "This project complies to the REUSE specification to decrease software licensing costs")](https://api.reuse.software/info/gitlab.com/the-common/project-template)
 
-## Getting started
+## How to use
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### If you're on GitLab
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+1. Create a new project via [the on-site interface](https://gitlab.com/projects/new), it is required to check the "Initialize repository with a README" checkbox.
+1. At localhost, launch a text terminal application, and run the following commands to clone the new project's repository to local:
 
-## Add your files
+    ```bash
+    git clone \
+        _repository_url_ \
+        _project_directory_
+    ```
 
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+1. Downloading a copy of [The common project template release archive](https://gitlab.com/the-common/project-template/-/releases).
+1. Extract The common project template release archive to a temporary directory.
+1. Copy all the files to the new project local repository's working tree(you may drop a few files that are irrevelant to your project).
+1. Continue the operation in [Common instructions](#common-instructions).
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/brlin/ubuntu-kernel-rebuild-howto.git
-git branch -M main
-git push -uf origin main
-```
+### If you're on GitHub
 
-## Integrate with your tools
+1. Click the ["Use this template" green button](https://github.com/the-common/project-template/generate) on [the mirrored GitHub project page](https://github.com/the-common/project-template).
+1. Follow the instructions on the webpage to create a new project.
+1. Continue the operation in [Common instructions](#common-instructions).
 
-* [Set up project integrations](https://gitlab.com/brlin/ubuntu-kernel-rebuild-howto/-/settings/integrations)
+### Common instructions
 
-## Collaborate with your team
+1. Rename the following files to have the real project files in their intended place:
+    + [real.README.md](real.README.md)→README.md  
+      This is the real project README document, which is renamed to make place for the project template README.
+    + [real.gitattributes](real.gitattributes)→.gitattributes  
+      This is the real Git path attributres configuration file, which is renamed to ensure all template files are included in the template release archive.
+    + [real.markdownlint.yml](real.markdownlint.yml)→.markdownlint.yml  
+      This is the real Markdownlint configuration file, which is renamed as it's no-emphasis-as-heading linting rule will not work for the real version of the project README document.
+1. Edit the [README.md project README template](real.README.md), replace the following `_placeholders_ to the appropriate content:
+    + `How\ to\ rebuild\ the\ Ubuntu\ kernel\ from\ source`  
+      The (display) name of the project.
+    + `This\ guide\ explains\ how\ to\ properly\ rebuild\ and\ install\ the\ Ubuntu\ kernel\ from\ source\,\ including\ workarounds\ for\ common\ nuances\ and\ edge\ cases\.`  
+      A one-line summary of the project.
+    + `brlin\/ubuntu\-kernel\-rebuild\-howto`  
+      The variable part of the project URL, you use another project hosting service you need to manually replace the entire URL instead.
+    + `CC\-BY\-SA\-4\.0\+`  
+      The name of the main license of the project.
+    + `https\:\/\/creativecommons\.org\/licenses\/by\-sa\/4\.0\/`  
+      the URL of the main license of the project.
+1. Replace the `project-name` placeholder text in [the compose.yml Compose configuration file](compose.yml) to your project's hostname-friendly name.
+1. Replace the `project-name` placeholder text in [the .gitignore file](.gitignore) to your project's name/identifier, this is used to prevent unpacked release archive files from being accidentally committed to the repository.
+1. Replace the `SPDX-FileCopyrightText` and the `SPDX-License-Identifier` fields of the [REUSE.toml machine-readable copyright declaration document](REUSE.toml) with appropriate content.
+1. Run the following commands(or its equivalent operation) to remove the template-only custom license:
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+    ```bash
+    find_opts=(
+        -type f
+        -exec
+            sed
+                --in-place
+                --regexp-extended
+                --expression='s@@@g'
+                {}
+                ';'
+    )
+    find . "${find_opts[@]}"
+    rm -f LICENSES/LicenseRef-Apache-2.0-If-Not-Used-In-Template-Projects.txt
+    ```
 
-## Test and Deploy
+1. (OPTIONAL) Running the following command to setup the pre-commit hook for [the pre-commit framework](https://pre-commit.com):
 
-Use the built-in continuous integration in GitLab.
+    ```bash
+    pre-commit install
+    ```
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+1. Commit all changes as a new revision(commit summary for reference: `docs: Write project README prototype`).
+1. (If you've cloned the repository back to local) push local changes to the remote repository.
 
-***
+### (OPTIONAL) Setting up Telegram notifications on GitLab
 
-# Editing this README
+Refer to the following instructions to set up Telegram notifications on changes of the project on GitLab:
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+1. From the project page, select the Settings > Integrations option in the menu.
+1. Click the Add button at the right of the Telegram option in the Add an integration panel.
+1. Toggle the Active checkbox in the Enable integration field.
+1. Fill in your Telegram bot token(can be obtained from the @BotFather Telegram channel).
+1. Selecting events that you want to trigger the Telegram notifications.
+1. In the Notification settings section:
+    1. Set the channel identifier where you want the Telgram bot to send notification to in the Channel identifier field.
+    1. (OPTIONAL) Untoggle the Notify only broken pipelines checkbox in the Notify only broken pipelines field so that you'll also be notified of successful pipelines.
+    1. (OPTIONAL) In the Branches for which notifications are to be sent dropdown menu, select All branches so that notifications from all branches will be sent to the specified Telegram channel.
+1. Click the Test settings button at the end of the form to verify whether the Telegram notification can be sent.
+1. Click the Save changes button at the end of the form to apply the changes.
 
-## Suggestions for a good README
+### (OPTIONAL) Setting up Telegram notifications on GitHub
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Refer to the following instructions to set up Telegram notifications on changes of the project on GitHub:
 
-## Name
-Choose a self-explaining name for your project.
+1. From the project/organization settings page, select Security > Secrets and variables > Actions in the menu to open the corresponding page.
+1. In the Repository/Organization secrets panel of the Secrets tab, click the New repository/organization secret button at the top-right.
+1. Enter `telegram_bot_api_token_ci` in the Name field, then paste in your Telegram bot token to the Secret field.
+1. Click the Add secret button at the bottom of the form to apply the changes.
+1. In the Repository/Organization variables panel of the Variables tab, click the Create new repository/organization variable button at the top-right.
+1. Enter `telegram_chat_id_ci` in the Name field, then paste in your Telegram chat ID to the Value field.
+1. Click the Add variable button at the bottom of the form to apply the changes.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+### (OPTIONAL) Setting up GitLab to GitHub mirroring
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Refer to the following instructions to set up automatic mirroring of the GitLab repository to GitHub:
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+1. (IF NOT ALREADY DONE) In the Settings > Developer settings > Personal access tokens > Fine-grained tokens page on GitHub, press the Generate new token button at the top-right corner to generate a new fine-grained personal access token.
+1. (IF NOT ALREADY DONE) Fill-in the following fields in the New fine-grained personal access token page:
+    + Token name: A sensible name to identify the newly created personal access token, e.g. `For GitLab to GitHub project mirroring`.
+    + Resource owner: The namespace where you want to mirror the project from.
+    + Expiration: Should be set as long as allowed by GitHub, which is currently 366 days.
+    + Description: A sensible descriptive text of the newly created personal access token, you may leave this field empty if the Token name is sensible enough.
+    + Repository access: `All repositories`.
+    + Permissions:
+        - Change Repository permissions > Contents to `Read and write`.
+        - Change Repository permissions > Workflows to `Read and write`.
+1. (IF NOT ALREADY DONE) Click the Generate token button at the bottom of the page to complete the personal access token generation.
+1. (IF NOT ALREADY DONE) Copy the generated personal access token in the Fine-grained personal access tokens page(it will only be shown once) and save it somewhere secure and persistent(like in your preferred password manager application).
+1. Create the GitHub mirror project.
+1. Copy the clone URL of the GitHub Git repository.
+1. In the Mirroring repositories section of the Settings > Repository page of the GitLab project, click the "Add new" button at the top right of the Mirrored repositories table.
+1. Fill in the following fields of the Add new mirror repository form:
+    + Git repository URL: Fill in the clone URL of the GitHub Git repository copied earlier.
+    + Mirror direction: `Push`.
+    + Authentication method: `Username and Password`.
+    + Username: Fill in your GitHub username(the content shouldn't really matter as long as it's not a null string).
+    + Password: Fill in the fine-grained personal access token you've generated previously.
+1. Click the Mirror repository button at the bottom of the Mirroring repositories section to complete creating the Mirroring repository configuration.
+1. Click the Update now at the right side of the mirroring repository configuration to trigger a manual push.
+1. Verify whether the value of the Last successful update has changed to `Just now`.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+   **NOTE:** If the value is still `Never`, try refreshing the page to fetch the latest status.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+   If an `Error` label appears at the right side, check your settings and recreate a new repository mirroring configuration.
+1. (OPTIONAL) Refresh the repository on GitHub to verify that the content does indeed synced from GitLab.
+1. In the Features section of the Settings > General page of the GitHub mirror project, disable the following unneeded features:
+    + Wikis
+    + Issues
+    + Projects
+1. In the repository main page on GitHub, click the gear icon a the top right of the About panel to open the Edit repository details dialog, and set the following fields:
+    + (OPTIONAL) Description: The project description text(should be the same as in the Settings > General page of the GitLab project).
+    + Website: The project URL on GitLab.
+    + (OPTIONAL) Topics: Sensible topic tags applied for the project(should be the same as in the Settings > General page of the GitLab project).
+    + Include in the home page: Untoggle the following options unless you plan on using them:
+        - Packages
+        - Deployments
+1. Click the Save changes at the down-left to apply the changes.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## References
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+The following materials are referenced during the development of this project:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+* [Inline Scripts | Shell Scripts - Provisioning | Vagrant | HashiCorp Developer](https://developer.hashicorp.com/vagrant/docs/provisioning/shell#inline)  
+  Explains how to run an inline script in a Vagrantfile.
+* [stat invocation (GNU Coreutils)](https://www.gnu.org/software/coreutils/manual/html_node/stat-invocation.html)  
+  Explains how to use the `stat` command to display file ownership settings.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Licensing
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Unless otherwise noted([comment headers](https://reuse.software/spec-3.3/#comment-headers)/[REUSE.toml](https://reuse.software/spec-3.3/#reusetoml)), this product is licensed under [the 4.0 International version of the Creative Commons Attribution-ShareAlike license](https://creativecommons.org/licenses/by-sa/4.0/), or any of its more recent versions of your preference.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+As an exception of the previous clause, this product can be licensed otherwise under [the 2.0 version of the Apache license](https://www.apache.org/licenses/LICENSE-2.0) _if_ it is used to instantiate/refactor a project based on it rather than using it in the making of another template project.  This allows relicensing the project assets to your liking in your non-template projects with only a conformance requirement of attributing this product somewhere in your project/product credits/acknowledgment/copyright notice documentation/user interface.
 
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+This work complies to [the REUSE Specification](https://reuse.software/spec/), refer to the [REUSE - Make licensing easy for everyone](https://reuse.software/) website for info regarding the licensing of this product.
