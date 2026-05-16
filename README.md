@@ -24,6 +24,10 @@ To acquire the source package of the running Ubuntu kernel, we must first enable
     apt update
     ```
 
+## Prepare a working directory for the process
+
+Create a new folder as the working directory of this process.  The path of this folder _must not contain spaces_ (and ideally, any characters that is non-alpha-numeric or dash) to prevent triggering compatibility issues with the build system.
+
 ## Licensing
 
 Unless otherwise noted([comment headers](https://reuse.software/spec-3.3/#comment-headers)/[REUSE.toml](https://reuse.software/spec-3.3/#reusetoml)), this product is licensed under [the _license_version_ version of the CC-BY-SA-4.0+ license](https\://creativecommons.org/licenses/by-sa/4.0/), or any of its more recent versions of your preference.
