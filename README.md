@@ -80,6 +80,35 @@ cd linux-_upstream version_
 
 Replace the `_upstream version_` placeholder text with the upstream version string of the kernel, for example, the `7.0.0-15.15` Ubuntu kernel version has an upstream version of `7.0.0`.
 
+## Add an entry to the Debian changelog
+
+Before building the kernel, we must add an entry to the Debian changelog.  This is required to properly version the resulting kernel packages.
+
+1. Run the following command in the terminal to add an entry to the Debian changelog:
+
+    ```bash
+    debchange --increment --changelog debian.master/changelog
+    ```
+
+   **NOTE:** Kernel package doesn't use the debian/changelog file.
+
+   a text editor will open to edit the new changelog entry.
+1. In the version field of the new changelog entry:
+    + Change the number right after the `-` character(the ABI number) to `999` to differentiate the custom kernel from the kernel released by Canonical.
+    + Rename the `ubuntuN` part to something that properly indicates the nature of the modifications, for example, `custom1`.
+1. Replace the `UNRELEASED` text in the changelog entry to the codename of the current Ubuntu release.
+1. Write a proper changelog message in the message field of the changelog entry, for example, `Rebuild the kernel with custom modifications.`.
+1. Save the file and exit the text editor.
+
+## References
+
+The following materials are referenced during the writing of this guide:
+
+* [How to build an Ubuntu Linux kernel - Ubuntu Kernel documentation](https://documentation.ubuntu.com/kernel/how-to/develop-customise/build-kernel/)  
+  Explains the general process of building an Ubuntu kernel.
+* [OPTIONS — dch(1) — devscripts — Debian bookworm — Debian Manpages](https://manpages.debian.org/bookworm/devscripts/dch.1.en.html#OPTIONS)  
+  Explains how to use the `debchange` command to add an entry to the Debian changelog.
+
 ## Licensing
 
 Unless otherwise noted([comment headers](https://reuse.software/spec-3.3/#comment-headers)/[REUSE.toml](https://reuse.software/spec-3.3/#reusetoml)), this product is licensed under [the 4.0 version of the Creative Commons Attribution-ShareAlike license](https://creativecommons.org/licenses/by-sa/4.0/), or any of its more recent versions of your preference.
