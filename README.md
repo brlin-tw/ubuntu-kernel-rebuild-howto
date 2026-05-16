@@ -50,6 +50,16 @@ Create a new folder as the working directory of this process.  The path of this 
 
 **NOTE:** If you're already build and running a custom kernel, the `uname -r` command may not return a version that has a corresponding source package in the Ubuntu archive.  In this case, you can manually specify the version of the kernel you want to acquire the source package of, by replacing `$(uname -r)` text with the version string.
 
+## Apply the modifications
+
+Apply whatever modifications you want to the source code.
+
+**NOTE:** If you want to apply patches that is delivered in the mbox format, you can directly use the following command to do so:
+
+```bash
+patch --strip=1 < /path/to/mbox/file
+```
+
 ## Licensing
 
 Unless otherwise noted([comment headers](https://reuse.software/spec-3.3/#comment-headers)/[REUSE.toml](https://reuse.software/spec-3.3/#reusetoml)), this product is licensed under [the 4.0 version of the Creative Commons Attribution-ShareAlike license](https://creativecommons.org/licenses/by-sa/4.0/), or any of its more recent versions of your preference.
