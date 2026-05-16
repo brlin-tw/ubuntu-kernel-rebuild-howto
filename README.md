@@ -30,23 +30,23 @@ Create a new folder as the working directory of this process.  The path of this 
 
 ## Acquire source package of the Ubuntu kernel
 
-Run the following commands in the terminal to acquire the source package of the current running Ubuntu kernel:
+1. Run the following command in the terminal to query the version of the running kernel:
 
-```bash
-if ! kernel_version="$(uname -r)"; then
-    printf \
-        'Error: Unable to query the version of the running kernel.\n' \
-        1>&2
-else
-    if ! apt source "linux-image-${kernel_version}"; then
-        printf \
-            'Error: Unable to acquire the source package of the running kernel.\n' \
-            1>&2
-    fi
-fi
-```
+    ```bash
+    uname -r
+    ```
 
-This will download the source package, and extract it in the current directory.
+    The output should be something like `7.0.0-15-generic`.
+
+1. Run the following commands in the terminal to acquire the source package of the current running Ubuntu kernel:
+
+    ```bash
+    apt source linux-image-_kernel version_
+    ```
+
+   Replace the `_kernel version_` placeholder text with kernel version string acquired from the previous step.
+
+   This will download the source package, and extract it in the current directory.
 
 **NOTE:** If you're already build and running a custom kernel, the `uname -r` command may not return a version that has a corresponding source package in the Ubuntu archive.  In this case, you can manually specify the version of the kernel you want to acquire the source package of, by replacing `$(uname -r)` text with the version string.
 
