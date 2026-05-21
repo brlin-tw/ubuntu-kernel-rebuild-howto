@@ -151,6 +151,16 @@ Before building the kernel, we must add an entry to the Debian changelog.  This 
 1. Write a proper changelog message in the message field of the changelog entry, for example, `Rebuild the kernel with custom modifications.`.
 1. Save the file and exit the text editor.
 
+## Drop the signed ZFS module package dependency to allow installation of the built kernel packages
+
+Currently, Ubuntu ships a signed ZFS module as a dependency of the kernel packages due to legal reasons.  This prevents us from installing the built kernel packages, since we don't have a compatible signed ZFS module package available to install along with the built kernel.
+
+We can work around this issue by dropping the signed ZFS module package dependency from the kernel packages before building them.  Refer to the following steps to do so:
+
+1. Open the `debian.master/control.d/vars.generic` file in a text editor.
+1. Edit the value of the `depends` field to drop the `linux-main-modules-zfs-PKGVER-ABINUM-generic [...]` entry.
+1. Save the file and exit the text editor.
+
 ## Build the kernel packages
 
 Run the following command in the terminal to build the kernel packages:
