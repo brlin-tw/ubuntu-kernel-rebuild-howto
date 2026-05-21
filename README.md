@@ -7,7 +7,7 @@ This guide explains how to properly rebuild and install the Ubuntu kernel from s
 
 ## Preface
 
-I have to rebuild my Ubuntu kernel for troubleshooting a screen hang problem on my Framework Laptop 13 (AMD 7040 series).  This guide documents the process.
+I have to rebuild my Ubuntu kernel for troubleshooting [a screen hang problem](https://gitlab.freedesktop.org/drm/amd/-/work_items/4141) on my Framework Laptop 13 (AMD 7040 series).  This guide documents the process.
 
 ## Note
 
