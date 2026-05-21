@@ -154,6 +154,16 @@ fakeroot debian/rules clean && \
 
 The built kernel packages will be in the parent directory of the current working directory.
 
+## Install the built kernel packages
+
+You may install the built kernel packages by running the following command _as root_:
+
+```bash
+apt install ../linux-{headers,image,modules}-*foofix1_*.deb
+```
+
+Replace the `foofix1` placeholder text in the command with the actual identifier you used in the previous created changelog entry.
+
 ## References
 
 The following materials are referenced during the writing of this guide:
