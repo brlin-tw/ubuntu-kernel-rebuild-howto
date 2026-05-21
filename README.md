@@ -123,6 +123,14 @@ Apply whatever modifications you want to the source code.
 patch --strip=1 < /path/to/mbox/file
 ```
 
+If a mailing list thread message ID is offered by the developer, use the following command to retrieve the mbox file of the thread:
+
+```bash
+b4 mbox _message_id_
+```
+
+Replace the `_message_id_` placeholder text with the actual message ID of the mailing list thread.
+
 ## Add an entry to the Debian changelog
 
 Before building the kernel, we must add an entry to the Debian changelog.  This is required to properly version the resulting kernel packages.
