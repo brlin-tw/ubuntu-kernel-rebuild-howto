@@ -138,7 +138,7 @@ Before building the kernel, we must add an entry to the Debian changelog.  This 
    a text editor will open to edit the new changelog entry.
 1. In the version field of the new changelog entry:
     + Change the number right after the `-` character(the ABI number) to `999` to differentiate the custom kernel from the kernel released by Canonical.
-    + Rename the `ubuntuN` part to something that properly indicates the nature of the modifications, for example, `custom1`.
+    + Rename the `ubuntuN` part to something that _uniquely_ identifies the nature of this set of kernel modifications, for example, `foofix1`.  We will use this identifier in the next steps to easily identify this build of custom kernel packages.
 1. Replace the `UNRELEASED` text in the changelog entry to the codename of the current Ubuntu release.
 1. Write a proper changelog message in the message field of the changelog entry, for example, `Rebuild the kernel with custom modifications.`.
 1. Save the file and exit the text editor.
