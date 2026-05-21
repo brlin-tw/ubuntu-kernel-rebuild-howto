@@ -1,4 +1,4 @@
-# (IN DEVELOPMENT) How to rebuild the Ubuntu kernel from source
+# How to rebuild the Ubuntu kernel from source
 
 This guide explains how to properly rebuild and install the Ubuntu kernel from source, including workarounds for common nuances and edge cases.
 
