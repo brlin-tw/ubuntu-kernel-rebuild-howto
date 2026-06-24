@@ -49,7 +49,7 @@ Replace the `/path/to/working/directory` placeholder text with the actual path o
 1. Run the following commands in the terminal to acquire the source package of the current running Ubuntu kernel:
 
     ```bash
-    apt source linux-image-_kernel version_
+    apt source linux-image-unsigned-_kernel version_
     ```
 
    Replace the `_kernel version_` placeholder text with kernel version string acquired from the previous step.
